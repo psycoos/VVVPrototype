@@ -1,14 +1,17 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+     11 steden stempelkaart
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <div *ngIf="results">
+    <p>{{results}}</p>
+    <p>{{results.text}}</p>
+  </div>
+  <button ion-button (click)="scanBarcode()">Scan QR-code</button>
+  <button ion-button (click)="readTag()">Lees NFC tag</button>
 </ion-content>
