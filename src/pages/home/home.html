@@ -7,11 +7,14 @@
 </ion-header>
 
 <ion-content padding>
-
-  <div *ngIf="results">
-    <p>{{results}}</p>
-    <p>{{results.text}}</p>
-  </div>
-  <button ion-button (click)="scanBarcode()">Scan QR-code</button>
-  <button ion-button (click)="readTag()">Lees NFC tag</button>
-</ion-content>
+    <ion-card *ngFor="let item of items">
+      {{item}}
+    </ion-card>
+  
+    <ion-fab center bottom>
+      <button ion-fab color="light" (click)="scan()"><ion-icon name="qr-scanner"></ion-icon></button>
+    </ion-fab>
+    <ion-fab right bottom>
+        <button ion-fab color="light" (click)="readTag()"><ion-icon name="barcode"></ion-icon></button>
+      </ion-fab>
+  </ion-content>

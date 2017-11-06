@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import {BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
 
 import { NFC, Ndef } from '@ionic-native/nfc';
@@ -12,8 +12,7 @@ import { Subscription } from 'rxjs/Rx'
 })
 export class HomePage {
 
-  options: BarcodeScannerOptions;
-  results: {};
+  public items: string[] = [];
 
   readingTag:   boolean   = false;
   writingTag:   boolean   = false;
@@ -22,6 +21,7 @@ export class HomePage {
   subscriptions: Array<Subscription> = new Array<Subscription>();
 
   constructor(
+    public platform: Platform,
     private barcode: BarcodeScanner,
     public navCtrl: NavController,
     private nfc: NFC,
@@ -35,7 +35,7 @@ export class HomePage {
             let tagContent = this.nfc.bytesToString(payload).substring(3);
             this.readingTag = false;
             console.log("De stad is: ", tagContent);
-            this.results = tagContent;
+            this.items.push(tagContent);
           }
           else if (this.writingTag) {
             if (!this.isWriting) {
@@ -74,14 +74,26 @@ export class HomePage {
     this.ndefMsg = this.ndef.textRecord(writeText);
   }
 
-  async scanBarcode(){
-
-    this.options = {
-      prompt: "Scan de QR-code stempel!"
+    scan() {
+      this.platform.ready().then(() => {
+        this.barcode.scan().then((barcodeData) => {
+          // success
+          this.items.push(barcodeData.text);
+        }, (err) => {
+          // error
+          alert(err);
+        });
+      });
     }
 
-    this.results = await this.barcode.scan(this.options);
-    console.log(this.results);
-  }
+  // async scanBarcode(){
+
+  //   this.options = {
+  //     prompt: "Scan de QR-code stempel!"
+  //   }
+
+  //   this.results = await this.barcode.scan(this.options);
+  //   console.log(this.results);
+  // }
 
 }
