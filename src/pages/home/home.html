@@ -80,11 +80,18 @@
   <!-- <ion-card *ngFor="let item of items">
       {{item}}
     </ion-card> -->
-  
-    <ion-fab center bottom>
-      <button ion-fab color="light" (click)="scan()"><ion-icon name="qr-scanner"></ion-icon></button>
-    </ion-fab>
-    <ion-fab right bottom>
-        <button ion-fab color="light" (click)="readTag()"><ion-icon name="barcode"></ion-icon></button>
-      </ion-fab>
-  </ion-content>
+
+  <ion-fab left bottom>
+    <div class="icons-shape" onclick="scan()">
+      <img src="/img/nfc_icon.svg" class="icons" (click)="scan()"/>
+    </div>
+    <!-- <button ion-fab color="light" (click)="scan()"><ion-icon name="qr-scanner"></ion-icon></button> -->
+  </ion-fab>
+  <ion-fab right bottom>
+    <div class="icons-shape" onclick="readTag()">
+      <img src="/img/qr_code_icon.svg" class="icons" (click)="readTag()"/>
+    </div>
+    <!-- <button ion-fab color="light" (click)="readTag()"><ion-icon name="barcode"></ion-icon></button> -->
+  </ion-fab>
+
+</ion-content>
