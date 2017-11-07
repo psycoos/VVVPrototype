@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar class="background-blue">
     <ion-title>
      11 steden stempelkaart
     </ion-title>
@@ -7,9 +7,79 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card *ngFor="let item of items">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/bolsward_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/leeuwarden_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/hindeloopen_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/franeker_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/sneek_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/harlingen_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/dokkum_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/sloot_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/bolsward_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/ijlst_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <div class="list-stamp__item">
+          <img src="/img/stavoren_1.svg" class="list-stamp__item--img" />
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <!-- <ion-card *ngFor="let item of items">
       {{item}}
-    </ion-card>
+    </ion-card> -->
   
     <ion-fab center bottom>
       <button ion-fab color="light" (click)="scan()"><ion-icon name="qr-scanner"></ion-icon></button>
