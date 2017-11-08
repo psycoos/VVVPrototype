@@ -3,7 +3,8 @@ import { NavController, Platform } from 'ionic-angular';
 import {BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
 
 import { NFC, Ndef } from '@ionic-native/nfc';
-import { Subscription } from 'rxjs/Rx'
+import { Subscription } from 'rxjs/Rx';
+
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Subscription } from 'rxjs/Rx'
 })
 export class HomePage {
 
-  public items: string[] = [];
+  items: Array<string> = ["Leeuwarden"];
 
   readingTag:   boolean   = false;
   writingTag:   boolean   = false;
@@ -28,6 +29,7 @@ export class HomePage {
     private ndef: Ndef
   ) {
 
+
     this.subscriptions.push(this.nfc.addNdefListener()
         .subscribe(data => {
           if (this.readingTag) {
@@ -36,6 +38,7 @@ export class HomePage {
             this.readingTag = false;
             console.log("De stad is: ", tagContent);
             this.items.push(tagContent);
+            
           }
           else if (this.writingTag) {
             if (!this.isWriting) {
@@ -56,8 +59,24 @@ export class HomePage {
         err => {
 
         })
-     );
-  }
+       );
+  
+     }
+
+   
+//  ionViewDidLoad () {
+//   console.log("hoi");
+//   if(this.items.includes('Leeuwarden'))
+//   console.log("Het werkt, pak een touw"); 
+//  }
+
+
+
+  // valuechecker() {
+  //   if('Leeuwarden' in this.items) 
+  //     console.log("Het werkt, pak een touw"); 
+  // }
+
 
   ionViewWillLeave() {
     this.subscriptions.forEach(sub => {
@@ -79,6 +98,8 @@ export class HomePage {
         this.barcode.scan().then((barcodeData) => {
           // success
           this.items.push(barcodeData.text);
+          if(this.items.includes('Leeuwarden'))
+          console.log("Het werkt, pak een touw");
         }, (err) => {
           // error
           alert(err);
@@ -97,3 +118,4 @@ export class HomePage {
   // }
 
 }
+

@@ -10,6 +10,7 @@
     <ion-card *ngFor="let item of items">
       {{item}}
     </ion-card>
+    <img src="/assets/images/touw.jpg" style="display: none; background: #000;" id="touw"/>
   
     <ion-fab center bottom>
       <button ion-fab color="light" (click)="scan()"><ion-icon name="qr-scanner"></ion-icon></button>
@@ -17,4 +18,5 @@
     <ion-fab right bottom>
         <button ion-fab color="light" (click)="readTag()"><ion-icon name="barcode"></ion-icon></button>
       </ion-fab>
+
   </ion-content>
