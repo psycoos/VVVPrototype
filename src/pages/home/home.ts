@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs/Rx';
 })
 export class HomePage {
 
-  items: Array<string> = ["Leeuwarden"];
+  items: Array<string> = ["Bolsward"];
 
   readingTag:   boolean   = false;
   writingTag:   boolean   = false;
@@ -85,7 +85,21 @@ export class HomePage {
     });
   }
 
-
+  // getImg(city) {
+  //   switch (city) {
+  //     case 'Bolsward':
+  //       if (this.items.includes('Bolsward')) {
+  //         console.log("Hoer")
+  //         return 'hoer'
+  //       } else {
+  //         return '/src/assets/images/bolsward_1.svg'
+  //       }
+  //       break;
+    
+  //     default:
+  //       break;
+  //   }
+  // } 
 
 
   readTag() {
