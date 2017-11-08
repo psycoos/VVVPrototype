@@ -20,6 +20,7 @@ export class HomePage {
   isWriting:    boolean   = false;
   ndefMsg:      string    = '';
   subscriptions: Array<Subscription> = new Array<Subscription>();
+  message = '';
 
   constructor(
     public platform: Platform,
@@ -84,8 +85,14 @@ export class HomePage {
     });
   }
 
+
+
+
   readTag() {
     this.readingTag = true;
+    if (this.readingTag == true){
+      this.message = "Scan nu een NFC tag";
+    }
   }
 
   writeTag(writeText: string) {
