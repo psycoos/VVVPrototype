@@ -1,3 +1,32 @@
 page-home {
 
 }
+
+.list-stamp {
+
+}
+
+.list-stamp__item {
+    border: 1px solid #b2b2b2;
+}
+
+.list-stamp__item--img {
+}
+
+.icons {
+    width: 100%;
+    height: 100%;
+}
+
+.icons-shape {
+    width: 50%;
+    margin: auto;
+    cursor: pointer;
+    -webkit-animation-name: greenPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-box-shadow: 0 0 18px #b5b5b5;
+    border-radius: 50%;
+    background-color: white;
+    padding: 0;
+}
