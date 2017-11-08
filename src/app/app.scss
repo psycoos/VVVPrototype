@@ -20,14 +20,18 @@ ion-app.md [padding] .scroll-content {
     padding: 0;
 }
 
-.toolbar-background-md {
+.toolbar-background {
     background-color: #244994;
 }
 
-.toolbar-title-md {
+.toolbar-title {
     text-align: center;
     color: #fff;
     font-family: Roboto;
     font-size: 26.666667px;
     font-weight: 500;
+}
+
+.toolbar-title-ios {
+    font-size: 17.5px;
 }
