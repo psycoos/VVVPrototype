@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
-import {BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 
 import { NFC, Ndef } from '@ionic-native/nfc';
 import { Subscription } from 'rxjs/Rx';
@@ -13,14 +13,14 @@ import { Subscription } from 'rxjs/Rx';
 })
 export class HomePage {
 
-  items: Array<string> = ["Bolsward"];
+  items: Array<string> = [];
 
-  readingTag:   boolean   = false;
-  writingTag:   boolean   = false;
-  isWriting:    boolean   = false;
-  ndefMsg:      string    = '';
+
+  readingTag: boolean = false;
+  writingTag: boolean = false;
+  isWriting: boolean = false;
+  ndefMsg: string = '';
   subscriptions: Array<Subscription> = new Array<Subscription>();
-  message = '';
 
   constructor(
     public platform: Platform,
@@ -32,44 +32,50 @@ export class HomePage {
 
 
     this.subscriptions.push(this.nfc.addNdefListener()
-        .subscribe(data => {
-          if (this.readingTag) {
-            let payload = data.tag.ndefMessage[0].payload;
-            let tagContent = this.nfc.bytesToString(payload).substring(3);
-            this.readingTag = false;
-            console.log("De stad is: ", tagContent);
-            this.items.push(tagContent);
-            
-          }
-          else if (this.writingTag) {
-            if (!this.isWriting) {
-              this.isWriting = true;
-              this.nfc.write([this.ndefMsg])
-                .then(() => {
-                  this.writingTag = false;
-                  this.isWriting = false;
-                  console.log("written");
-                })
-                .catch(err => {
-                  this.writingTag = false;
-                  this.isWriting = false;
-                });
-            }
-          }
-        },
-        err => {
+      .subscribe(data => {
+        if (this.readingTag) {
+          let payload = data.tag.ndefMessage[0].payload;
+          let tagContent = this.nfc.bytesToString(payload).substring(3);
+          this.readingTag = false;
+          console.log("De stad is: ", tagContent);
+          this.items.push(tagContent);
 
-        })
-       );
-  
-     }
+        }
+        else if (this.writingTag) {
+          if (!this.isWriting) {
+            this.isWriting = true;
+            this.nfc.write([this.ndefMsg])
+              .then(() => {
+                this.writingTag = false;
+                this.isWriting = false;
+                console.log("written");
+              })
+              .catch(err => {
+                this.writingTag = false;
+                this.isWriting = false;
+              });
+          }
+        }
+      },
+      err => {
 
-   
-//  ionViewDidLoad () {
-//   console.log("hoi");
-//   if(this.items.includes('Leeuwarden'))
-//   console.log("Het werkt, pak een touw"); 
-//  }
+      })
+    );
+
+  }
+
+
+  ionViewDidEnter() {
+    if (this.items.includes('Sneek'))
+      (document.getElementById('Sneek') as HTMLImageElement).src = "../../assets/images/sneek_2.svg";
+    else (document.getElementById('Sneek') as HTMLImageElement).src = "../../assets/images/sneek_1.svg";
+    if (this.items.includes('Leeuwarden'))
+      (document.getElementById('Leeuwarden') as HTMLImageElement).src = "../../assets/images/leeuwarden_2.svg";
+    else (document.getElementById('Leeuwarden') as HTMLImageElement).src = "../../assets/images/leeuwarden_1.svg";
+    if (this.items.includes('Hindeloopen'))
+      (document.getElementById('Hindeloopen') as HTMLImageElement).src = "../../assets/images/hindeloopen_2.svg";
+    else (document.getElementById('Hindeloopen') as HTMLImageElement).src = "../../assets/images/hindeloopen_1.svg";
+  }
 
 
 
@@ -85,28 +91,8 @@ export class HomePage {
     });
   }
 
-  // getImg(city) {
-  //   switch (city) {
-  //     case 'Bolsward':
-  //       if (this.items.includes('Bolsward')) {
-  //         console.log("Hoer")
-  //         return 'hoer'
-  //       } else {
-  //         return '/src/assets/images/bolsward_1.svg'
-  //       }
-  //       break;
-    
-  //     default:
-  //       break;
-  //   }
-  // } 
-
-
   readTag() {
     this.readingTag = true;
-    if (this.readingTag == true){
-      this.message = "Scan nu een NFC tag";
-    }
   }
 
   writeTag(writeText: string) {
@@ -114,19 +100,18 @@ export class HomePage {
     this.ndefMsg = this.ndef.textRecord(writeText);
   }
 
-    scan() {
-      this.platform.ready().then(() => {
-        this.barcode.scan().then((barcodeData) => {
-          // success
-          this.items.push(barcodeData.text);
-          if(this.items.includes('Leeuwarden'))
-          console.log("Het werkt, pak een touw");
-        }, (err) => {
-          // error
-          alert(err);
-        });
+  scan() {
+    this.platform.ready().then(() => {
+      this.barcode.scan().then((barcodeData) => {
+        // success
+        this.items.push(barcodeData.text);
+
+      }, (err) => {
+        // error
+        alert(err);
       });
-    }
+    });
+  }
 
   // async scanBarcode(){
 
