@@ -110,7 +110,8 @@ export class HomePage {
         // success
         this.items.push(barcodeData.text);
         console.log(this.items);
-        this.changeValues;
+        this.changeValues();
+        console.log("Henkie")
       }, (err) => {
         // error
         alert(err);
