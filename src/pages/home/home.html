@@ -82,15 +82,8 @@
       {{item}}
     </ion-card> -->
 
-  <ion-fab left bottom>
-    <button class="icons-shape" onclick="scan()">
-      <img src="../../assets/images/nfc_icon.svg" class="icons"/>
-    </button>
-  </ion-fab>
-  <ion-fab right bottom>
-    <button class="icons-shape" onclick="readTag()">
-      <img src="../../assets/images/qr_code_icon.svg" class="icons"/>
-    </button>
-  </ion-fab>
+    
+  <button ion-fab color="light" (click)="readTag()"><ion-icon name="barcode"></ion-icon></button>
+  <button ion-fab color="light" (click)="scan()"><ion-icon name="qr-scanner"></ion-icon></button>
 
 </ion-content>

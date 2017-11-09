@@ -39,6 +39,8 @@ export class HomePage {
           this.readingTag = false;
           console.log("De stad is: ", tagContent);
           this.items.push(tagContent);
+          console.log(this.items);
+          this.changeValues();
 
         }
         else if (this.writingTag) {
@@ -64,8 +66,10 @@ export class HomePage {
 
   }
 
-
-  ionViewDidEnter() {
+  ionViewDidLoad() {
+    this.changeValues();  
+  }
+  changeValues() {
     if (this.items.includes('Sneek'))
       (document.getElementById('Sneek') as HTMLImageElement).src = "../../assets/images/sneek_2.svg";
     else (document.getElementById('Sneek') as HTMLImageElement).src = "../../assets/images/sneek_1.svg";
@@ -105,7 +109,8 @@ export class HomePage {
       this.barcode.scan().then((barcodeData) => {
         // success
         this.items.push(barcodeData.text);
-
+        console.log(this.items);
+        this.changeValues;
       }, (err) => {
         // error
         alert(err);
