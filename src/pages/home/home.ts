@@ -71,14 +71,14 @@ export class HomePage {
   }
   changeValues() {
     if (this.items.includes('Sneek'))
-      (document.getElementById('Sneek') as HTMLImageElement).src = "../../assets/images/sneek_2.svg";
-    else (document.getElementById('Sneek') as HTMLImageElement).src = "../../assets/images/sneek_1.svg";
+      (document.getElementById('Sneek') as HTMLImageElement).src = "assets/images/sneek_2.svg";
+    else (document.getElementById('Sneek') as HTMLImageElement).src = "assets/images/sneek_1.svg";
     if (this.items.includes('Leeuwarden'))
-      (document.getElementById('Leeuwarden') as HTMLImageElement).src = "../../assets/images/leeuwarden_2.svg";
-    else (document.getElementById('Leeuwarden') as HTMLImageElement).src = "../../assets/images/leeuwarden_1.svg";
+      (document.getElementById('Leeuwarden') as HTMLImageElement).src = "assets/images/leeuwarden_2.svg";
+    else (document.getElementById('Leeuwarden') as HTMLImageElement).src = "assets/images/leeuwarden_1.svg";
     if (this.items.includes('Hindeloopen'))
-      (document.getElementById('Hindeloopen') as HTMLImageElement).src = "../../assets/images/hindeloopen_2.svg";
-    else (document.getElementById('Hindeloopen') as HTMLImageElement).src = "../../assets/images/hindeloopen_1.svg";
+      (document.getElementById('Hindeloopen') as HTMLImageElement).src = "assets/images/hindeloopen_2.svg";
+    else (document.getElementById('Hindeloopen') as HTMLImageElement).src = "assets/images/hindeloopen_1.svg";
   }
 
 
